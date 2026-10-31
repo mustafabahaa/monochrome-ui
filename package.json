@@ -1,20 +1,23 @@
 {
   "name": "@monochrome-ui/design-system",
-  "private": true,
   "version": "0.1.0",
   "type": "module",
+  "description": "Reusable monochrome UI foundations, MUI theme, and shared interface primitives.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mustafabahaa/monochrome-ui.git"
+  },
+  "sideEffects": ["./src/tokens.css"],
   "exports": {
     ".": "./src/index.ts",
     "./theme": "./src/theme/createMonochromeTheme.ts",
     "./tokens": "./src/foundations/tokens.ts",
     "./tokens.css": "./src/tokens.css"
   },
-  "dependencies": {
-    "@mui/material": "^7.2.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1"
-  },
   "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.2.0",
     "@mui/x-charts": "^9.7.0",
     "@mui/x-date-pickers": "^9.7.0",
     "react": "^19.1.0",

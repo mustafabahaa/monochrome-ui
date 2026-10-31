@@ -1,11 +1,30 @@
 # Monochrome UI
 
-Monochrome UI is the shared, app-neutral design system for products that use its visual language.
+Shared, app-neutral visual foundations and React/MUI components used by Kippa and GameHub.
 
-- `designTokens`: canonical colors, spacing, radii, typography, and elevation.
-- `createMonochromeTheme(mode)`: shared MUI theme factory.
-- `tokens.css`: semantic CSS custom properties for non-MUI surfaces.
-- App chrome follows the shared ChatGPT-inspired neutral system: white and charcoal surfaces, monochrome controls, compact Plus Jakarta Sans typography, 16px cards, and Linear AppIcon marks. Finance charts retain distinct data colors.
+## Install from GitHub
 
-Product-specific MUI overrides may remain in the consuming application, but raw
-visual values must be defined here rather than copied between projects.
+```sh
+npm install github:mustafabahaa/monochrome-ui#v0.1.0
+```
+
+In an app manifest, use the package name and pin a release tag:
+
+```json
+{
+  "dependencies": {
+    "@monochrome-ui/design-system": "git+https://github.com/mustafabahaa/monochrome-ui.git#v0.1.0"
+  }
+}
+```
+
+The consuming app supplies React, MUI, Emotion, and any optional MUI X peer dependencies it uses.
+
+## Public API
+
+- `createMonochromeTheme(mode, ...extensions)` creates the shared MUI theme.
+- `designTokens`, `modeTokens`, and `layoutTokens` expose the shared foundations.
+- The package root re-exports MUI primitives and reusable navigation, status, chart, and layout components.
+- `@monochrome-ui/design-system/tokens.css` provides semantic CSS custom properties.
+
+Applications can extend the shared theme with product data colors and app-specific behavior. Shared visual roles and tokens remain defined here.
