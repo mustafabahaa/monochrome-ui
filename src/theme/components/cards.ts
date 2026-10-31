@@ -125,6 +125,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           style: {
             backgroundColor: t.surfaceOffWhite,
             borderRight: `1px solid ${t.borderGray}`,
+            borderRadius: 0,
             boxShadow: 'none',
           },
         },

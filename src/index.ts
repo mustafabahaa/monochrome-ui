@@ -21,6 +21,8 @@ export { designTokens } from './foundations/tokens';
 export { BrandMark } from './components/BrandMark';
 export { EmptyStateLayout } from './components/EmptyStateLayout';
 export type { EmptyStateLayoutProps } from './components/EmptyStateLayout';
+export { CalendarDayButton } from './components/CalendarDayButton';
+export type { CalendarDayButtonProps } from './components/CalendarDayButton';
 export { PageHeader, SectionHeader } from './components/PageHeaders';
 export type { PageHeaderProps, SectionHeaderProps } from './components/PageHeaders';
 export { ConfirmationDialog } from './components/ConfirmationDialog';
