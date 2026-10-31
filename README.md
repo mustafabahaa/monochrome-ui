@@ -5,7 +5,7 @@ Shared, app-neutral visual foundations and React/MUI components used by Kippa an
 ## Install from GitHub
 
 ```sh
-npm install github:mustafabahaa/monochrome-ui#v0.1.0
+npm install https://github.com/mustafabahaa/monochrome-ui/archive/refs/tags/v0.1.1.tar.gz
 ```
 
 In an app manifest, use the package name and pin a release tag:
@@ -13,7 +13,7 @@ In an app manifest, use the package name and pin a release tag:
 ```json
 {
   "dependencies": {
-    "@monochrome-ui/design-system": "git+https://github.com/mustafabahaa/monochrome-ui.git#v0.1.0"
+    "@monochrome-ui/design-system": "https://github.com/mustafabahaa/monochrome-ui/archive/refs/tags/v0.1.1.tar.gz"
   }
 }
 ```
