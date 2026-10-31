@@ -8,6 +8,12 @@ export * from '@mui/material';
 
 export { designTokens } from './foundations/tokens';
 export { BrandMark } from './components/BrandMark';
+export { EmptyStateLayout } from './components/EmptyStateLayout';
+export type { EmptyStateLayoutProps } from './components/EmptyStateLayout';
+export { PageHeader, SectionHeader } from './components/PageHeaders';
+export type { PageHeaderProps, SectionHeaderProps } from './components/PageHeaders';
+export { ConfirmationDialog } from './components/ConfirmationDialog';
+export type { ConfirmationDialogProps } from './components/ConfirmationDialog';
 export { BrandLoadingScreen } from './components/BrandLoadingScreen';
 export type { BrandLoadingScreenProps } from './components/BrandLoadingScreen';
 export { BrandButton, MobileNavigationItem, NavigationAction, NavigationItem } from './components/NavigationPrimitives';
