@@ -2,9 +2,14 @@ import type {} from './mui';
 import type {} from './mui-ui-roles';
 import type {} from './mui-component-roles';
 
+export type SemanticPaletteColor = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+
 // Public UI primitive surface. Applications import components here so this
 // package remains the single supported entry point for visual building blocks.
 export * from '@mui/material';
+export * from '@mui/x-charts';
+export * from '@mui/x-date-pickers';
+export { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 export { designTokens } from './foundations/tokens';
 export { BrandMark } from './components/BrandMark';
