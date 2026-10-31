@@ -7,7 +7,13 @@ export type SemanticPaletteColor = 'primary' | 'secondary' | 'success' | 'warnin
 // Public UI primitive surface. Applications import components here so this
 // package remains the single supported entry point for visual building blocks.
 export * from '@mui/material';
-export * from '@mui/x-charts';
+export {
+  BarChart,
+  ChartsGrid,
+  ChartsReferenceLine,
+  ChartsXAxis,
+  LineChart,
+} from '@mui/x-charts';
 export * from '@mui/x-date-pickers';
 export { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
