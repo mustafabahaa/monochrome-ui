@@ -1,13 +1,15 @@
 {
   "name": "@monochrome-ui/design-system",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "type": "module",
   "description": "Reusable monochrome UI foundations, MUI theme, and shared interface primitives.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mustafabahaa/monochrome-ui.git"
   },
-  "sideEffects": ["./src/tokens.css"],
+  "sideEffects": [
+    "./src/tokens.css"
+  ],
   "exports": {
     ".": "./src/index.ts",
     "./theme": "./src/theme/createMonochromeTheme.ts",

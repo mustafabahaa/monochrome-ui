@@ -51,6 +51,8 @@ export {
   AiAssistantPage,
   AiAssistantStreamCursor,
 } from './components/AiAssistantPrimitives';
+export { AssistantChat } from './components/AssistantChat';
+export type { AssistantChatMessage, AssistantChatProps } from './components/AssistantChat';
 export {
   SystemStatusAction,
   SystemStatusCode,
