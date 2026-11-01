@@ -129,8 +129,9 @@ export function AssistantChat({
   return (
     <ChatRoot className={className} sx={{ height }}>
       <Transcript ref={(node) => {
-        transcriptRef.current = node;
-        if (externalTranscriptRef) externalTranscriptRef.current = node;
+        const element = node as HTMLDivElement | null;
+        transcriptRef.current = element;
+        if (externalTranscriptRef) externalTranscriptRef.current = element;
       }} onScroll={onTranscriptScroll} role="log" aria-label={ariaLabel} aria-live="polite">
         {beforeMessages}
         {messages.length === 0 ? emptyState : messages.map((message) => (
