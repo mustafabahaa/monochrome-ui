@@ -1,4 +1,4 @@
-import type { FormEvent, ReactNode } from 'react';
+import type { FormEvent, KeyboardEvent, ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -23,6 +23,8 @@ export type AssistantChatProps = {
   disabled?: boolean;
   placeholder?: string;
   emptyState?: ReactNode;
+  beforeMessages?: ReactNode;
+  afterMessages?: ReactNode;
   renderMessage?: (message: AssistantChatMessage) => ReactNode;
   startAdornment?: ReactNode;
   sendAdornment?: ReactNode;
@@ -34,6 +36,10 @@ export type AssistantChatProps = {
   ariaLabel?: string;
   footer?: ReactNode;
   height?: number | string;
+  transcriptRef?: { current: HTMLDivElement | null };
+  onTranscriptScroll?: () => void;
+  autoScroll?: boolean;
+  onInputKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
   className?: string;
 };
 
@@ -100,14 +106,20 @@ export function AssistantChat({
   ariaLabel = 'Conversation',
   footer,
   height = 'min(60dvh, 520px)',
+  transcriptRef: externalTranscriptRef,
+  onTranscriptScroll,
+  autoScroll = true,
+  beforeMessages,
+  afterMessages,
+  onInputKeyDown,
   className,
 }: AssistantChatProps) {
   const transcriptRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = transcriptRef.current;
-    if (element) element.scrollTop = element.scrollHeight;
-  }, [messages]);
+    if (autoScroll && element) element.scrollTop = element.scrollHeight;
+  }, [autoScroll, messages]);
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -116,7 +128,11 @@ export function AssistantChat({
 
   return (
     <ChatRoot className={className} sx={{ height }}>
-      <Transcript ref={transcriptRef} role="log" aria-label={ariaLabel} aria-live="polite">
+      <Transcript ref={(node) => {
+        transcriptRef.current = node;
+        if (externalTranscriptRef) externalTranscriptRef.current = node;
+      }} onScroll={onTranscriptScroll} role="log" aria-label={ariaLabel} aria-live="polite">
+        {beforeMessages}
         {messages.length === 0 ? emptyState : messages.map((message) => (
           <MessageRow key={message.id} data-role={message.role}>
             {message.role === 'assistant' && message.avatar}
@@ -126,6 +142,7 @@ export function AssistantChat({
             </Box>
           </MessageRow>
         ))}
+        {afterMessages}
       </Transcript>
       <Composer onSubmit={submit}>
         {startAdornment}
@@ -136,6 +153,14 @@ export function AssistantChat({
           value={value}
           disabled={disabled || busy}
           onChange={(event) => onChange(event.target.value)}
+          onKeyDown={(event) => {
+            onInputKeyDown?.(event);
+            if (event.defaultPrevented) return;
+            if (event.key === 'Enter' && !event.shiftKey) {
+              event.preventDefault();
+              if (!busy && !disabled && value.trim()) void onSubmit();
+            }
+          }}
           placeholder={placeholder}
           aria-label={inputLabel}
           slotProps={{ htmlInput: { maxLength } }}
