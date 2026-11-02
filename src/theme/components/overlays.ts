@@ -4,6 +4,17 @@ import { designTokens } from '../../foundations/tokens';
 import type { OverrideContext } from './types';
 
 export const overlayOverrides = ({ mode, tokens: t }: OverrideContext): Components<Theme> => ({
+  MuiPopover: {
+    styleOverrides: {
+      paper: {
+        backgroundColor: t.surfacePure,
+        backgroundImage: 'none',
+        border: `1px solid ${t.borderGray}`,
+        borderRadius: designTokens.radius.card,
+        boxShadow: 'none',
+      },
+    },
+  },
   MuiDialog: {
     styleOverrides: {
       paper: {
