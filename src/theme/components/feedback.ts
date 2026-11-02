@@ -37,6 +37,7 @@ export const feedbackOverrides = ({
           backgroundImage: `repeating-linear-gradient(135deg, transparent 0 10px, ${mode === "dark" ? "rgba(255,255,255,.1)" : "rgba(13,13,13,.08)"} 10px 14px)`,
           "& .MuiLinearProgress-bar": {
             borderRadius: designTokens.radius.control,
+            backgroundColor: t.textPrimary,
           },
         },
       },
