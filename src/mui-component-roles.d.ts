@@ -11,13 +11,13 @@ declare module '@mui/material/Avatar' {
   interface AvatarPropsVariantOverrides { profile: true }
 }
 declare module '@mui/material/MenuItem' {
-  interface MenuItemOwnProps { variant?: 'menuAction' }
+  interface MenuItemOwnProps { variant?: 'menuAction' | 'destructiveAction' }
 }
 declare module '@mui/material/Chip' {
   interface ChipPropsVariantOverrides { overlayBadge: true; quietBadge: true }
 }
 declare module '@mui/material/IconButton' {
-  interface IconButtonOwnProps { variant?: 'overlayAction' | 'accountTrigger' | 'utilityAction' | 'quietAction' }
+  interface IconButtonOwnProps { variant?: 'overlayAction' | 'userMenuTrigger' | 'utilityAction' | 'quietAction' }
 }
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {
@@ -65,8 +65,8 @@ declare module '@mui/material/Typography' {
     brandWordmark: true;
     breadcrumb: true;
     breadcrumbCurrent: true;
-    profileName: true;
-    profileDetail: true;
+    userName: true;
+    userDetail: true;
     errorTitle: true;
     emptyStateTitle: true;
   }

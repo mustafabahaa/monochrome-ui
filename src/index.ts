@@ -25,13 +25,15 @@ export { CalendarDayButton } from './components/CalendarDayButton';
 export type { CalendarDayButtonProps } from './components/CalendarDayButton';
 export { PageHeader, SectionHeader } from './components/PageHeaders';
 export type { PageHeaderProps, SectionHeaderProps } from './components/PageHeaders';
+export { PageScaffold } from './components/PageScaffold';
+export type { PageScaffoldProps } from './components/PageScaffold';
 export { ConfirmationDialog } from './components/ConfirmationDialog';
 export type { ConfirmationDialogProps } from './components/ConfirmationDialog';
 export { BrandLoadingScreen } from './components/BrandLoadingScreen';
 export type { BrandLoadingScreenProps } from './components/BrandLoadingScreen';
 export { BrandButton, MobileNavigationItem, NavigationAction, NavigationItem } from './components/NavigationPrimitives';
 export { DestructiveListIcon } from './components/ListPrimitives';
-export { BankCardArtwork } from './components/BankCardArtwork';
+export { CardFaceArtwork } from './components/CardFaceArtwork';
 export { CardChip, ContactlessIcon } from './components/CardHardware';
 export {
   MobileBottomNavigationAction,
@@ -40,11 +42,11 @@ export {
   MobileBottomNavigationShell,
 } from './components/BottomNavigationPrimitives';
 export type { MobileBottomNavigationItemProps } from './components/BottomNavigationPrimitives';
-export { BudgetMetricBadge } from './components/BudgetMetricBadge';
-export type { BudgetMetricBadgeProps, BudgetMetricTone } from './components/BudgetMetricBadge';
+export { MetricBadge } from './components/MetricBadge';
+export type { MetricBadgeProps, MetricBadgeTone } from './components/MetricBadge';
 export { ChartColorMarker } from './components/ChartColorMarker';
 export type { ChartColorMarkerProps } from './components/ChartColorMarker';
-export { CardActivityText } from './components/CardActivityText';
+export { ActivityStateText } from './components/ActivityStateText';
 export {
   AiAssistantFooter,
   AiAssistantLoadingBadge,
@@ -63,28 +65,28 @@ export {
 export { SystemStatusLayout } from './components/SystemStatusLayout';
 export type { SystemStatusLayoutProps } from './components/SystemStatusLayout';
 export {
-  BudgetAllocationActions,
-  BudgetAllocationRemoveButton,
-  BudgetAllocationRow,
-  BudgetCycleAccountRow,
-  BudgetCycleSummaryItem,
-} from './components/BudgetCyclePrimitives';
+  RowActionGroup,
+  CompactIconButton,
+  EditableListRow,
+  DividedDetailRow,
+  ResponsiveSummaryItem,
+} from './components/RowPrimitives';
 export { SaveFeedbackMotion } from './components/SaveFeedbackMotion';
 export type { SaveFeedbackMotionProps, SaveFeedbackMotionVariant } from './components/SaveFeedbackMotion';
-export { CycleCashFlowColumn, CycleCashFlowGuide, CycleChartSwatch, CycleTrendLineChart } from './components/CycleAnalyticsPrimitives';
+export { ComparisonColumn, ChartGuide, ChartSwatch, TrendAreaChart } from './components/ChartPrimitives';
 export {
-  BudgetPulseCategoryTile,
-  BudgetPulseSkeleton,
-  BudgetPulseStatus,
-  BudgetPulseSummary,
-  BudgetPulseValue,
-} from './components/BudgetPulsePrimitives';
+  RankedMetricTile,
+  PulseSkeleton,
+  StatusBadge,
+  SupportingSummary,
+  PercentageValue,
+} from './components/MetricPulsePrimitives';
 export type {
-  BudgetPulseCategoryRank,
-  BudgetPulseCategoryTone,
-  BudgetPulseSkeletonVariant,
-  BudgetPulseStatusTone,
-} from './components/BudgetPulsePrimitives';
+  MetricTileRank,
+  MetricTileTone,
+  SkeletonShape,
+  StatusBadgeTone,
+} from './components/MetricPulsePrimitives';
 export { modeTokens } from './foundations/mode';
 export { layoutTokens } from './foundations/layout';
 export { createMonochromeTheme, appTheme } from './theme/createMonochromeTheme';

@@ -12,7 +12,7 @@ export const overlayOverrides = ({ mode, tokens: t }: OverrideContext): Componen
         borderRadius: designTokens.radius.card,
         border: `1px solid ${t.borderGray}`,
         boxShadow: mode === 'dark' ? '0 12px 28px rgba(0,0,0,.28)' : '0 12px 28px rgba(0,0,0,.08)',
-        '&.MuiPaper-cardDetailDialog': {
+        '&.MuiPaper-detailSurface': {
           borderRadius: designTokens.radius.dialog,
           border: 0,
           overflow: 'hidden',

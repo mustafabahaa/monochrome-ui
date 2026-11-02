@@ -3,8 +3,8 @@ import { designTokens } from "../../foundations/tokens";
 import type { OverrideContext } from "./types";
 
 declare module "@mui/material/LinearProgress" {
-  interface LinearProgressPropsColorOverrides {
-    loan: true;
+  interface LinearProgressProps {
+    size?: 'large';
   }
 }
 
@@ -28,7 +28,7 @@ export const feedbackOverrides = ({
     },
     variants: [
       {
-        props: { color: "loan" },
+        props: { size: 'large' },
         style: {
           height: 42,
           borderRadius: designTokens.radius.control,
@@ -37,7 +37,6 @@ export const feedbackOverrides = ({
           backgroundImage: `repeating-linear-gradient(135deg, transparent 0 10px, ${mode === "dark" ? "rgba(255,255,255,.1)" : "rgba(13,13,13,.08)"} 10px 14px)`,
           "& .MuiLinearProgress-bar": {
             borderRadius: designTokens.radius.control,
-            backgroundColor: t.textPrimary,
           },
         },
       },

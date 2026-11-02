@@ -4,17 +4,17 @@ import type { OverrideContext } from './types';
 
 declare module '@mui/material/Paper' {
   interface PaperPropsVariantOverrides {
-    categoryRow: true;
-    categoryListRow: true;
-    dashboardAccountRow: true;
+    itemRow: true;
+    dividedListRow: true;
+    dividedRow: true;
     timelineRow: true;
     iconBadge: true;
-    dashboardSection: true;
-    bankCard: true;
-    bankCardHeader: true;
-    cardDetailDialog: true;
-    budgetCategoryRow: true;
-    profileHouseholdRow: true;
+    sectionSurface: true;
+    cardSurface: true;
+    cardSurfaceHeader: true;
+    detailSurface: true;
+    detailRow: true;
+    groupIdentityRow: true;
     navigationMenu: true;
     workspaceSidebar: true;
     emptyState: true;
@@ -27,7 +27,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
   const chrome = mode === 'dark' ? '#FFFFFF' : '#0D0D0D';
   const highlight = mode === 'dark' ? 'inset 0 1px 0 rgba(255,255,255,.045)' : 'inset 0 1px 0 rgba(255,255,255,.9)';
   const shadow = mode === 'dark' ? '0 12px 28px rgba(0,0,0,.16)' : '0 10px 26px rgba(24,53,34,.035)';
-  const bankCardSurface = {
+  const cardSurfaceStyle = {
     position: 'relative',
     overflow: 'hidden',
     color: mode === 'dark' ? '#F5F5F5' : '#171717',
@@ -40,8 +40,8 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
     transition: 'transform 150ms ease, filter 150ms ease',
     '&[data-inactive="true"]': { filter: 'grayscale(1) brightness(.72)' },
     '&[data-clickable="true"]:hover': { transform: 'translateY(-2px)' },
-    '.bank-card-muted': { color: mode === 'dark' ? 'rgba(245,245,245,.72)' : 'rgba(23,23,23,.68)' },
-    '.bank-card-utilization': {
+    '.card-surface-muted': { color: mode === 'dark' ? 'rgba(245,245,245,.72)' : 'rgba(23,23,23,.68)' },
+    '.card-surface-utilization': {
       height: 3,
       maxWidth: 180,
       marginTop: 8,
@@ -49,16 +49,16 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
       backgroundColor: mode === 'dark' ? 'rgba(255,255,255,.14)' : 'rgba(0,0,0,.12)',
       '& .MuiLinearProgress-bar': { backgroundColor: mode === 'dark' ? '#FFFFFF' : '#0D0D0D' },
     },
-    '.bank-card-utilization-detail': {
+    '.card-surface-utilization-detail': {
       height: 6,
       borderRadius: 3,
       backgroundColor: mode === 'dark' ? 'rgba(255,255,255,.25)' : 'rgba(0,0,0,.15)',
       '& .MuiLinearProgress-bar': { borderRadius: 3 },
     },
-    '.bank-card-utilization-detail--success .MuiLinearProgress-bar': { backgroundColor: designTokens.color.success },
-    '.bank-card-utilization-detail--warning .MuiLinearProgress-bar': { backgroundColor: designTokens.color.warning },
-    '.bank-card-utilization-detail--error .MuiLinearProgress-bar': { backgroundColor: designTokens.color.error },
-    '.bank-card-pay-action': {
+    '.card-surface-utilization-detail--success .MuiLinearProgress-bar': { backgroundColor: designTokens.color.success },
+    '.card-surface-utilization-detail--warning .MuiLinearProgress-bar': { backgroundColor: designTokens.color.warning },
+    '.card-surface-utilization-detail--error .MuiLinearProgress-bar': { backgroundColor: designTokens.color.error },
+    '.card-surface-pay-action': {
       backgroundColor: mode === 'dark' ? 'rgba(255,255,255,.16)' : '#0D0D0D',
       color: '#FFFFFF',
       '&:hover': { backgroundColor: mode === 'dark' ? 'rgba(255,255,255,.24)' : '#262626' },
@@ -78,22 +78,22 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
       },
       variants: [
         {
-          props: { variant: 'bankCard' },
+          props: { variant: 'cardSurface' },
           style: {
-            ...bankCardSurface,
+            ...cardSurfaceStyle,
             borderRadius: 18,
           },
         },
         {
-          props: { variant: 'bankCardHeader' },
+          props: { variant: 'cardSurfaceHeader' },
           style: {
-            ...bankCardSurface,
+            ...cardSurfaceStyle,
             border: 0,
             borderRadius: `${designTokens.radius.dialog}px ${designTokens.radius.dialog}px 0 0`,
           },
         },
         {
-          props: { variant: 'cardDetailDialog' },
+          props: { variant: 'detailSurface' },
           style: {
             borderRadius: designTokens.radius.dialog,
             overflow: 'hidden',
@@ -175,7 +175,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'profileHouseholdRow' },
+          props: { variant: 'groupIdentityRow' },
           style: {
             borderRadius: designTokens.radius.subtle * 2,
             backgroundColor: mode === 'dark' ? 'rgba(255,255,255,.08)' : 'rgba(13,13,13,.05)',
@@ -184,7 +184,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'dashboardAccountRow' },
+          props: { variant: 'dividedRow' },
           style: {
             padding: '10px 0 0',
             border: 0,
@@ -209,7 +209,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'categoryListRow' },
+          props: { variant: 'dividedListRow' },
           style: {
             padding: '12px 0',
             border: 0,
@@ -220,21 +220,21 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'categoryRow' },
+          props: { variant: 'itemRow' },
           style: {
             borderRadius: 10,
             border: '1px solid transparent',
             boxShadow: 'none',
             backgroundColor: alpha(chrome, mode === 'dark' ? 0.12 : 0.06),
-            '.category-dot': {
+            '.item-marker': {
               width: 7,
               height: 7,
               borderRadius: '50%',
               backgroundColor: chrome,
               flexShrink: 0,
             },
-            '&[data-category-type="income"] .category-dot': { backgroundColor: designTokens.color.success },
-            '.category-row-action': {
+            '&[data-item-type="positive"] .item-marker': { backgroundColor: designTokens.color.success },
+            '.row-action': {
               width: 36,
               height: 36,
               color: chrome,
@@ -242,11 +242,11 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
               pointerEvents: 'none',
               transition: 'opacity .15s ease',
             },
-            '&:hover .category-row-action, &:focus-within .category-row-action': { opacity: 1, pointerEvents: 'auto' },
+            '&:hover .row-action, &:focus-within .row-action': { opacity: 1, pointerEvents: 'auto' },
           },
         },
         {
-          props: { variant: 'budgetCategoryRow' },
+          props: { variant: 'detailRow' },
           style: {
             border: 0,
             borderRadius: designTokens.radius.moderate,
@@ -407,7 +407,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'categoryCapacity' },
+          props: { variant: 'capacityTrack' },
           style: {
             position: 'relative',
             overflow: 'hidden',
@@ -419,7 +419,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'categoryCapacitySpent' },
+          props: { variant: 'capacityFill' },
           style: {
             position: 'absolute',
             insetInline: 0,
@@ -432,7 +432,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'categoryCapacityOver' },
+          props: { variant: 'capacityOverflow' },
           style: {
             position: 'absolute',
             insetInline: 0,
@@ -489,7 +489,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
       },
       variants: [
         {
-          props: { variant: 'dashboardSection' },
+          props: { variant: 'sectionSurface' },
           style: {
             padding: 0,
             border: 0,

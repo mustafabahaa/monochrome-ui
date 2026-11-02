@@ -40,7 +40,6 @@ export const designTokens = {
     outlineVariant: '#D4D4D4',
     inverseSurface: '#2A2A2A',
     inverseOnSurface: '#ECECEC',
-    creditCard: '#7c3aed',
   },
   dark: {
     surface: '#212121',

@@ -2,18 +2,18 @@ import { forwardRef } from 'react';
 import Paper, { type PaperProps } from '@mui/material/Paper';
 import { alpha, styled } from '@mui/material/styles';
 
-export type BudgetMetricTone = 'planned' | 'spent' | 'error' | 'success';
+export type MetricBadgeTone = 'primary' | 'secondary' | 'error' | 'success';
 
-export type BudgetMetricBadgeProps = Omit<PaperProps, 'color' | 'variant'> & {
-  tone: BudgetMetricTone;
+export type MetricBadgeProps = Omit<PaperProps, 'color' | 'variant'> & {
+  tone: MetricBadgeTone;
 };
 
 const Root = styled(Paper, {
   shouldForwardProp: (prop) => prop !== 'tone',
-})<{ tone: BudgetMetricTone }>(({ theme, tone }) => {
+})<{ tone: MetricBadgeTone }>(({ theme, tone }) => {
   const color = {
-    planned: theme.palette.secondary.main,
-    spent: theme.palette.primary.main,
+    primary: theme.palette.primary.main,
+    secondary: theme.palette.secondary.main,
     error: theme.palette.error.main,
     success: theme.palette.success.main,
   }[tone];
@@ -31,8 +31,8 @@ const Root = styled(Paper, {
   };
 });
 
-/** Named accent badge for budget metrics; tone selects a semantic theme color. */
-export const BudgetMetricBadge = forwardRef<HTMLDivElement, BudgetMetricBadgeProps>(function BudgetMetricBadge(
+/** Small badge for emphasizing a metric with a semantic theme color. */
+export const MetricBadge = forwardRef<HTMLDivElement, MetricBadgeProps>(function MetricBadge(
   { tone, ...props },
   ref,
 ) {

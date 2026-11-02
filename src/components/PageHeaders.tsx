@@ -11,6 +11,7 @@ export interface PageHeaderProps {
 export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
   return (
     <Stack
+      data-page-heading="true"
       direction="row"
       flexWrap="wrap"
       useFlexGap

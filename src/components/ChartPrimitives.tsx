@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import { LineChart } from '@mui/x-charts/LineChart';
 
-export const CycleChartSwatch = styled(Box, {
+export const ChartSwatch = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'swatchColor',
 })<{ swatchColor: string }>(({ swatchColor }) => ({
   width: 10,
@@ -12,7 +12,7 @@ export const CycleChartSwatch = styled(Box, {
   backgroundColor: swatchColor,
 }));
 
-export const CycleCashFlowGuide = styled(Box)(({ theme }) => ({
+export const ChartGuide = styled(Box)(({ theme }) => ({
   position: 'absolute',
   left: 0,
   right: 0,
@@ -21,7 +21,7 @@ export const CycleCashFlowGuide = styled(Box)(({ theme }) => ({
   pointerEvents: 'none',
 }));
 
-export const CycleTrendLineChart = styled(LineChart)(({ theme }) => ({
+export const TrendAreaChart = styled(LineChart)(({ theme }) => ({
   '& .MuiAreaElement-root': {
     fill: alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.2 : 0.1),
   },
@@ -44,25 +44,29 @@ export const CycleTrendLineChart = styled(LineChart)(({ theme }) => ({
   },
 }));
 
-interface CycleCashFlowColumnProps {
-  cycleName: string;
-  income: number;
-  spent: number;
-  currency: string;
-  capacityHeight: number;
-  incomeHeight: number;
-  spendHeight: number;
+interface ComparisonColumnProps {
+  label: string;
+  primaryValue: number;
+  secondaryValue: number;
+  primaryLabel: string;
+  secondaryLabel: string;
+  unit: string;
+  trackHeight: number;
+  primaryHeight: number;
+  secondaryHeight: number;
 }
 
-export function CycleCashFlowColumn({
-  cycleName,
-  income,
-  spent,
-  currency,
-  capacityHeight,
-  incomeHeight,
-  spendHeight,
-}: CycleCashFlowColumnProps) {
+export function ComparisonColumn({
+  label,
+  primaryValue,
+  secondaryValue,
+  primaryLabel,
+  secondaryLabel,
+  unit,
+  trackHeight,
+  primaryHeight,
+  secondaryHeight,
+}: ComparisonColumnProps) {
   return (
     <Box
       sx={{
@@ -73,7 +77,7 @@ export function CycleCashFlowColumn({
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'center',
-        '&:hover .cycle-cashflow-tooltip, &:focus-within .cycle-cashflow-tooltip': {
+        '&:hover .comparison-column-tooltip, &:focus-within .comparison-column-tooltip': {
           opacity: 1,
           transform: 'translate(-50%, -8px)',
         },
@@ -81,10 +85,10 @@ export function CycleCashFlowColumn({
     >
       <Box
         tabIndex={0}
-        aria-label={`${cycleName}: income ${income.toLocaleString()} ${currency}, spent ${spent.toLocaleString()} ${currency}`}
+        aria-label={`${label}: ${primaryLabel} ${primaryValue.toLocaleString()} ${unit}, ${secondaryLabel} ${secondaryValue.toLocaleString()} ${unit}`}
         sx={(theme) => ({
           width: '100%',
-          height: `${capacityHeight}%`,
+          height: `${trackHeight}%`,
           maxWidth: 76,
           minHeight: 84,
           position: 'relative',
@@ -100,7 +104,7 @@ export function CycleCashFlowColumn({
             position: 'absolute',
             insetInline: 0,
             bottom: 0,
-            height: `${incomeHeight}%`,
+            height: `${primaryHeight}%`,
             minHeight: 5,
             backgroundColor: theme.palette.primary.dark,
             borderRadius: '14px 14px 10px 10px',
@@ -112,7 +116,7 @@ export function CycleCashFlowColumn({
             position: 'absolute',
             insetInline: 0,
             bottom: 0,
-            height: `${spendHeight}%`,
+            height: `${secondaryHeight}%`,
             minHeight: 4,
             backgroundColor: theme.palette.secondary.main,
             borderRadius: '14px 14px 10px 10px',
@@ -122,12 +126,12 @@ export function CycleCashFlowColumn({
       </Box>
 
       <Box
-        className="cycle-cashflow-tooltip"
+        className="comparison-column-tooltip"
         sx={(theme) => ({
           position: 'absolute',
           zIndex: 2,
           left: '50%',
-          bottom: `${Math.min(88, capacityHeight)}%`,
+          bottom: `${Math.min(88, trackHeight)}%`,
           opacity: 0,
           transform: 'translate(-50%, 0)',
           transition: 'opacity 160ms ease, transform 160ms ease',
@@ -141,16 +145,24 @@ export function CycleCashFlowColumn({
           boxShadow: theme.shadows[3],
         })}
       >
-        <Typography variant="caption" color="inherit" sx={{ opacity: 0.72 }}>Income</Typography>
+        <Typography variant="caption" color="inherit" sx={{ opacity: 0.72 }}>
+          {primaryLabel}
+        </Typography>
         <Typography variant="chartTooltipValue" color="inherit">
-          {income.toLocaleString()} {currency}
+          {primaryValue.toLocaleString()} {unit}
+        </Typography>
+        <Typography variant="caption" color="inherit" sx={{ opacity: 0.72 }}>
+          {secondaryLabel}
+        </Typography>
+        <Typography variant="chartTooltipValue" color="inherit">
+          {secondaryValue.toLocaleString()} {unit}
         </Typography>
       </Box>
 
       <Typography
-        variant="chartCycleLabel"
+        variant="chartPeriodLabel"
         color="text.secondary"
-        title={cycleName}
+        title={label}
         sx={{
           position: 'absolute',
           top: 'calc(100% + 10px)',
@@ -163,7 +175,7 @@ export function CycleCashFlowColumn({
           whiteSpace: 'nowrap',
         }}
       >
-        {cycleName}
+        {label}
       </Typography>
     </Box>
   );

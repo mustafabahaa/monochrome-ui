@@ -1,6 +1,6 @@
 {
   "name": "@monochrome-ui/design-system",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "type": "module",
   "description": "Reusable monochrome UI foundations, MUI theme, and shared interface primitives.",
   "repository": {
@@ -12,6 +12,7 @@
   ],
   "exports": {
     ".": "./src/index.ts",
+    "./eslint": "./src/eslint/index.js",
     "./theme": "./src/theme/createMonochromeTheme.ts",
     "./tokens": "./src/foundations/tokens.ts",
     "./tokens.css": "./src/tokens.css"

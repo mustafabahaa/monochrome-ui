@@ -1,5 +1,5 @@
-/** Monochrome low-poly artwork shared by every bank card. */
-export function BankCardArtwork() {
+/** Monochrome low-poly artwork shared by card-face surfaces. */
+export function CardFaceArtwork() {
   return (
     <svg
       aria-hidden="true"

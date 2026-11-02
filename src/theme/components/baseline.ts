@@ -75,7 +75,7 @@ export const baselineOverrides = ({
         background: ${t.surface};
         color: ${t.textSecondary};
       }
-      .ds-transaction-type-dot {
+      .ds-record-type-dot {
         position: relative;
         z-index: 1;
         width: 8px;
@@ -84,7 +84,7 @@ export const baselineOverrides = ({
         border-radius: 50%;
         background: ${t.textSecondary};
       }
-      .ds-transaction-avatar-badge .MuiBadge-badge {
+      .ds-record-avatar-badge .MuiBadge-badge {
         min-width: 0;
         height: auto;
         padding: 0;
@@ -120,11 +120,11 @@ export const baselineOverrides = ({
       .ds-stepper > :last-of-type::after {
         display: none;
       }
-      .ds-transaction-type-dot[data-type="income"] { background: ${designTokens.color.success}; }
-      .ds-transaction-type-dot[data-type="expense"] { background: ${designTokens.color.error}; }
-      .ds-transaction-type-dot[data-type="adjustment"] { background: ${designTokens.color.warning}; }
-      .ds-transaction-type-dot[data-type="transfer"] { background: ${t.textSecondary}; }
-      .ds-transaction-icon {
+      .ds-record-type-dot[data-type="income"] { background: ${designTokens.color.success}; }
+      .ds-record-type-dot[data-type="expense"] { background: ${designTokens.color.error}; }
+      .ds-record-type-dot[data-type="adjustment"] { background: ${designTokens.color.warning}; }
+      .ds-record-type-dot[data-type="transfer"] { background: ${t.textSecondary}; }
+      .ds-record-icon {
         border-radius: 50%;
         background: ${alpha(chrome, mode === "dark" ? 0.1 : 0.06)};
         color: ${t.textPrimary};

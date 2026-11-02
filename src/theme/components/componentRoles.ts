@@ -22,7 +22,10 @@ export const componentRoleOverrides = ({ mode, tokens: t }: OverrideContext): Co
         color: dark ? '#0D0D0D' : '#FFFFFF', fontSize: 13, fontWeight: 700, filter: 'grayscale(1)',
       } }],
     },
-    MuiMenuItem: { variants: [{ props: { variant: 'menuAction' }, style: { borderRadius: 8 } }] },
+    MuiMenuItem: { variants: [
+      { props: { variant: 'menuAction' }, style: { borderRadius: 8 } },
+      { props: { variant: 'destructiveAction' }, style: { borderRadius: 8, color: designTokens.color.error } },
+    ] },
     MuiChip: {
       variants: [
         { props: { variant: 'overlayBadge' }, style: {
@@ -43,7 +46,7 @@ export const componentRoleOverrides = ({ mode, tokens: t }: OverrideContext): Co
           color: '#FFFFFF', backgroundColor: 'rgba(13,13,13,.68)', backdropFilter: 'blur(4px)',
           '&:hover': { backgroundColor: 'rgba(13,13,13,.84)' },
         } },
-        { props: { variant: 'accountTrigger' }, style: {
+        { props: { variant: 'userMenuTrigger' }, style: {
           padding: 4, width: 40, height: 40, borderRadius: '50%', backgroundColor: t.surfacePure,
           border: `1px solid ${t.borderGray}`, '&:hover': { backgroundColor: t.surfaceContainerLow },
         } },
@@ -139,8 +142,8 @@ export const componentRoleOverrides = ({ mode, tokens: t }: OverrideContext): Co
         { props: { variant: 'brandWordmark' }, style: { fontSize: 24, lineHeight: '30px', fontWeight: 800, letterSpacing: '-.01em', color: t.textPrimary } },
         { props: { variant: 'breadcrumb' }, style: { fontSize: 13, color: t.textSecondary } },
         { props: { variant: 'breadcrumbCurrent' }, style: { fontSize: 13, fontWeight: 600, color: t.textPrimary } },
-        { props: { variant: 'profileName' }, style: { fontWeight: 700, fontSize: 14, color: t.textPrimary } },
-        { props: { variant: 'profileDetail' }, style: { fontSize: 12, color: t.textSecondary } },
+        { props: { variant: 'userName' }, style: { fontWeight: 700, fontSize: 14, color: t.textPrimary } },
+        { props: { variant: 'userDetail' }, style: { fontSize: 12, color: t.textSecondary } },
         { props: { variant: 'errorTitle' }, style: { fontWeight: 700 } },
         { props: { variant: 'emptyStateTitle' }, style: { fontWeight: 650 } },
         { props: { variant: 'statusMetadata' }, style: { fontWeight: 600, color: t.textSecondary } },

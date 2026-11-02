@@ -4,7 +4,7 @@ import type { OverrideContext } from './types';
 
 declare module '@mui/material/Avatar' {
   interface AvatarPropsVariantOverrides {
-    profileMenu: true;
+    userAvatarLarge: true;
     appBar: true;
   }
 }
@@ -13,7 +13,7 @@ export const navigationOverrides = ({ mode, tokens: t }: OverrideContext): Compo
   MuiAvatar: {
     variants: [
       {
-        props: { variant: 'profileMenu' },
+        props: { variant: 'userAvatarLarge' },
         style: {
           width: 44,
           height: 44,

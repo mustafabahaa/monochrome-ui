@@ -6,11 +6,9 @@ import type { ThemeMode } from '../foundations/types';
 declare module '@mui/material/styles' {
   interface Palette {
     chart: { colors: string[] };
-    creditCard: { main: string; light: string };
   }
   interface PaletteOptions {
     chart?: { colors?: string[] };
-    creditCard?: { main?: string; light?: string };
   }
   interface TypeBackground {
     sidebar: string;
@@ -48,6 +46,5 @@ export function createPalette(mode: ThemeMode): PaletteOptions {
     chart: {
       colors: [isDark ? '#FFFFFF' : '#0D0D0D', ...designTokens.dataColors],
     },
-    creditCard: { main: c.creditCard, light: alpha(c.creditCard, 0.1) },
   };
 }
