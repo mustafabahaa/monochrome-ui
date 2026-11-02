@@ -15,6 +15,7 @@ export const uiRoleOverrides: Components<Theme> = {
       { props: { variant: 'contentPanel' }, style: ({ theme }) => ({ backgroundColor: theme.palette.background.paper, border: `1px solid ${theme.palette.divider}`, borderRadius: theme.spacing(1), padding: theme.spacing(3) }) },
       { props: { variant: 'insetPanel' }, style: ({ theme }) => ({ backgroundColor: theme.palette.background.default, border: `1px solid ${theme.palette.divider}`, borderRadius: theme.shape.borderRadius, padding: theme.spacing(2) }) },
       { props: { variant: 'mediaFrame' }, style: ({ theme }) => ({ width: '100%', display: 'grid', placeItems: 'center', backgroundColor: theme.palette.action.hover, padding: theme.spacing(2), boxSizing: 'border-box' }) },
+      { props: { variant: 'monochromeMedia' }, style: ({ theme }) => ({ display: 'block', width: '100%', aspectRatio: '1 / 1', objectFit: 'contain', borderRadius: theme.spacing(1), backgroundColor: theme.palette.action.hover, filter: 'grayscale(1)' }) },
     ],
   },
   MuiChip: {

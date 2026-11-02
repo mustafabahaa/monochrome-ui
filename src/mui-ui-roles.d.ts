@@ -33,6 +33,7 @@ declare module '@mui/material/Paper' {
     contentPanel: true;
     insetPanel: true;
     mediaFrame: true;
+    monochromeMedia: true;
   }
 }
 
