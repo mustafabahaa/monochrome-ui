@@ -5,6 +5,7 @@ import type { OverrideContext } from './types';
 
 export const overlayOverrides = ({ mode, tokens: t }: OverrideContext): Components<Theme> => ({
   MuiPopover: {
+    defaultProps: { elevation: 0 },
     styleOverrides: {
       paper: {
         backgroundColor: t.surfacePure,
