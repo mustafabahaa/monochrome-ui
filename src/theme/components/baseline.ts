@@ -1,11 +1,13 @@
-import { alpha, type Components, type Theme } from '@mui/material/styles';
-import { designTokens } from '../../foundations/tokens';
-import type { OverrideContext } from './types';
+import { alpha, type Components, type Theme } from "@mui/material/styles";
+import { designTokens } from "../../foundations/tokens";
+import type { OverrideContext } from "./types";
 
-export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Components<Theme> => {
-  const chrome = mode === 'dark' ? '#FFFFFF' : '#0D0D0D';
+export const baselineOverrides = ({
+  mode,
+  tokens: t,
+}: OverrideContext): Components<Theme> => {
+  const chrome = mode === "dark" ? "#FFFFFF" : "#0D0D0D";
   return {
-    MuiTypography: { styleOverrides: { root: { color: 'inherit' } } },
     MuiCssBaseline: {
       styleOverrides: `
       html { color-scheme: ${mode}; min-height: 100%; }
@@ -19,7 +21,7 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
       }
       * {
         scrollbar-width: thin;
-        scrollbar-color: ${alpha(chrome, mode === 'dark' ? 0.28 : 0.24)} transparent;
+        scrollbar-color: ${alpha(chrome, mode === "dark" ? 0.28 : 0.24)} transparent;
       }
       *::-webkit-scrollbar {
         width: 6px;
@@ -32,13 +34,13 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
         box-shadow: none;
       }
       *::-webkit-scrollbar-thumb {
-        background-color: ${alpha(chrome, mode === 'dark' ? 0.3 : 0.24)};
+        background-color: ${alpha(chrome, mode === "dark" ? 0.3 : 0.24)};
         border: 0;
         border-radius: 999px;
         box-shadow: none;
       }
       *::-webkit-scrollbar-thumb:hover {
-        background-color: ${alpha(chrome, mode === 'dark' ? 0.45 : 0.38)};
+        background-color: ${alpha(chrome, mode === "dark" ? 0.45 : 0.38)};
       }
       .ds-desktop-nav-item {
         width: 48px;
@@ -54,15 +56,15 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
         border-radius: 16px;
       }
       .ds-desktop-nav-item:hover {
-        background-color: ${alpha(chrome, mode === 'dark' ? 0.05 : 0.04)};
+        background-color: ${alpha(chrome, mode === "dark" ? 0.05 : 0.04)};
         color: ${t.textPrimary};
       }
       .ds-desktop-nav-item[aria-current="page"] {
-        background-color: ${alpha(chrome, mode === 'dark' ? 0.08 : 0.07)};
+        background-color: ${alpha(chrome, mode === "dark" ? 0.08 : 0.07)};
         color: ${t.textPrimary};
       }
       .ds-desktop-nav-item[data-open="true"] {
-        background-color: ${alpha(chrome, mode === 'dark' ? 0.08 : 0.07)};
+        background-color: ${alpha(chrome, mode === "dark" ? 0.08 : 0.07)};
         color: ${t.textPrimary};
       }
       .ds-nav-submenu-caret {
@@ -124,13 +126,13 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
       .ds-transaction-type-dot[data-type="transfer"] { background: ${t.textSecondary}; }
       .ds-transaction-icon {
         border-radius: 50%;
-        background: ${alpha(chrome, mode === 'dark' ? 0.1 : 0.06)};
+        background: ${alpha(chrome, mode === "dark" ? 0.1 : 0.06)};
         color: ${t.textPrimary};
       }
       .ds-stepper-node {
         position: relative;
         z-index: 1;
-        background-color: ${alpha(chrome, mode === 'dark' ? 0.1 : 0.08)};
+        background-color: ${alpha(chrome, mode === "dark" ? 0.1 : 0.08)};
         color: ${t.textPrimary};
       }
       .ds-desktop-nav-item:focus-visible,
@@ -140,7 +142,7 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
       }
       .ds-desktop-quick-entry {
         background-color: ${chrome};
-        color: ${mode === 'dark' ? '#0D0D0D' : '#FFFFFF'};
+        color: ${mode === "dark" ? "#0D0D0D" : "#FFFFFF"};
         transition: opacity 150ms ease, transform 100ms ease;
       }
       .ds-desktop-quick-entry:hover { opacity: 0.82; }
@@ -155,7 +157,7 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
         border-radius: ${designTokens.radius.moderate}px !important;
         background-color: ${t.surfacePure} !important;
         color: ${t.textPrimary} !important;
-        box-shadow: 0 4px 16px ${mode === 'dark' ? 'rgba(0, 0, 0, 0.28)' : 'rgba(0, 0, 0, 0.08)'} !important;
+        box-shadow: 0 4px 16px ${mode === "dark" ? "rgba(0, 0, 0, 0.28)" : "rgba(0, 0, 0, 0.08)"} !important;
         font-family: ${designTokens.typography.fontFamily};
         font-size: 13px;
         font-weight: 500;
@@ -185,6 +187,6 @@ export const baselineOverrides = ({ mode, tokens: t }: OverrideContext): Compone
       .notistack-MuiContent button { color: ${t.textSecondary}; }
     `,
     },
-    MuiDivider: { styleOverrides: { root: { borderColor: 'divider' } } },
+    MuiDivider: { styleOverrides: { root: { borderColor: "divider" } } },
   };
 };
