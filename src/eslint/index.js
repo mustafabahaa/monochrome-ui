@@ -3,7 +3,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const declarationFiles = ['mui.d.ts', 'mui-ui-roles.d.ts', 'mui-component-roles.d.ts'];
+const declarationFiles = [
+  'mui.d.ts',
+  'mui-ui-roles.d.ts',
+  'mui-component-roles.d.ts',
+  ...fs.readdirSync(path.join(packageRoot, 'theme/components'))
+    .filter((filename) => filename.endsWith('.ts') || filename.endsWith('.tsx'))
+    .map((filename) => path.join('theme/components', filename)),
+];
 
 const readCustomVariants = (interfaceName) => {
   const variants = new Set();
@@ -11,7 +18,7 @@ const readCustomVariants = (interfaceName) => {
     const source = fs.readFileSync(path.join(packageRoot, filename), 'utf8');
     const declarations = new RegExp(`interface\\s+${interfaceName}\\s*\\{([^}]*)\\}`, 'g');
     for (const match of source.matchAll(declarations)) {
-      for (const property of match[1].matchAll(/^\s*([A-Za-z_$][\w$]*)\s*\??\s*:/gm)) {
+      for (const property of match[1].matchAll(/(?:^|[;\n])\s*([A-Za-z_$][\w$]*)\s*\??\s*:/gm)) {
         variants.add(property[1]);
       }
     }
