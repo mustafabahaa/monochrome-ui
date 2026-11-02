@@ -11,6 +11,9 @@ export interface PageScaffoldProps {
 
 /** Shared page width and content inset. PageHeader keeps its baseline while body content shifts inward. */
 export function PageScaffold({ children, maxWidth = 'none', gutter = 0 }: PageScaffoldProps) {
+  const responsiveGutter = typeof gutter === 'object' ? gutter : { xs: gutter };
+  const headerGutter = { ...responsiveGutter, md: 4 };
+
   return (
     <Box
       data-page-scaffold="true"
@@ -19,8 +22,8 @@ export function PageScaffold({ children, maxWidth = 'none', gutter = 0 }: PageSc
         width: '100%',
         maxWidth,
         mx: 'auto',
-        px: gutter,
-        pl: { xs: gutter, md: 4 },
+        pl: headerGutter,
+        pr: gutter,
         '& [data-page-heading="true"]': { ml: { xs: 0, md: -4 } },
       }}
     >
