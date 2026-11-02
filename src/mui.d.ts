@@ -21,6 +21,7 @@ declare module '@mui/material/Button' {
     keypad: true;
     keypadBack: true;
     compactField: true;
+    adornmentAction: true;
     primaryAction: true;
     assistantPrompt: true;
     assistantPromptFeatured: true;

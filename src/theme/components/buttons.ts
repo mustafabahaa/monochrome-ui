@@ -117,6 +117,20 @@ export const buttonOverrides = ({ mode, tokens: t }: OverrideContext): Component
         },
       },
       {
+        props: { variant: 'adornmentAction' },
+        style: {
+          minHeight: 32,
+          height: 32,
+          minWidth: 0,
+          borderRadius: designTokens.radius.control,
+          padding: '4px 12px',
+          backgroundColor: 'transparent',
+          color: t.textPrimary,
+          '&:hover': { backgroundColor: t.surfaceOffWhite },
+          '&:active': { transform: 'none' },
+        },
+      },
+      {
         props: { variant: 'primaryAction' },
         style: {
           minHeight: 56,

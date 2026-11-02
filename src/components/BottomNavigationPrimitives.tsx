@@ -1,6 +1,7 @@
 import { forwardRef, type ReactNode } from 'react';
 import { Badge, Paper, useTheme, type PaperProps } from '@mui/material';
 import { alpha, keyframes, styled } from '@mui/material/styles';
+import { designTokens } from '../foundations/tokens';
 
 const navFloatIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -16,8 +17,10 @@ const BottomNavigationSurface = styled(Paper)(({ theme }) => ({
   zIndex: 1000,
   padding: '6px 6px calc(6px + env(safe-area-inset-bottom))',
   overflow: 'visible',
-  backgroundColor: 'transparent',
+  backgroundColor: theme.palette.background.paper,
   backgroundImage: 'none',
+  borderTop: `1px solid ${theme.palette.divider}`,
+  borderRadius: `${designTokens.radius.card}px ${designTokens.radius.card}px 0 0`,
   boxShadow: 'none',
   animation: `${navFloatIn} 0.35s cubic-bezier(0.22, 1, 0.36, 1)`,
   [`${theme.breakpoints.up('md')}`]: { display: 'none' },
