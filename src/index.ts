@@ -24,7 +24,7 @@ export type { EmptyStateLayoutProps } from './components/EmptyStateLayout';
 export { CalendarDayButton } from './components/CalendarDayButton';
 export type { CalendarDayButtonProps } from './components/CalendarDayButton';
 export { PageHeader, SectionHeader } from './components/PageHeaders';
-export type { PageHeaderProps, SectionHeaderProps } from './components/PageHeaders';
+export type { PageHeaderBackAction, PageHeaderProps, SectionHeaderProps } from './components/PageHeaders';
 export { PageScaffold } from './components/PageScaffold';
 export type { PageScaffoldProps } from './components/PageScaffold';
 export { ConfirmationDialog } from './components/ConfirmationDialog';

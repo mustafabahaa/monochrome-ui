@@ -1,15 +1,20 @@
 import type { ReactNode } from 'react';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Button, Paper, Stack, SvgIcon, Typography } from '@mui/material';
+
+export interface PageHeaderBackAction {
+  label: string;
+  onClick: () => void;
+}
 
 export interface PageHeaderProps {
   title: string;
   subtitle?: string;
-  leadingAction?: ReactNode;
+  backAction?: PageHeaderBackAction;
   action?: ReactNode;
 }
 
-/** Shared page title, supporting copy, and optional leading or trailing page actions. */
-export function PageHeader({ title, subtitle, leadingAction, action }: PageHeaderProps) {
+/** Shared page title, supporting copy, and optional back or trailing page actions. */
+export function PageHeader({ title, subtitle, backAction, action }: PageHeaderProps) {
   const heading = (
     <Box sx={{ minWidth: 0 }}>
       <Typography variant="pageTitle" color="text.primary">
@@ -24,25 +29,39 @@ export function PageHeader({ title, subtitle, leadingAction, action }: PageHeade
   );
 
   return (
-    <Stack
-      data-page-heading="true"
-      direction="row"
-      flexWrap="wrap"
-      useFlexGap
-      gap={2}
-      sx={{ mt: 0.5 }}
-      alignItems={action ? 'center' : 'flex-start'}
-      justifyContent="space-between"
-    >
-      {leadingAction ? (
-        <Stack direction="row" alignItems="flex-start" spacing={1} sx={{ minWidth: 0, flex: 1 }}>
-          <Box sx={{ flexShrink: 0, mt: 0.25 }}>{leadingAction}</Box>
-          <Box sx={{ minWidth: 0, flex: 1 }}>{heading}</Box>
-        </Stack>
-      ) : (
-        heading
+    <Stack data-page-heading="true" spacing={1.5} sx={{ mt: 0.5 }}>
+      {backAction && (
+        <Button
+          variant="text"
+          onClick={backAction.onClick}
+          startIcon={
+            <SvgIcon fontSize="small" aria-hidden="true">
+              <path
+                d="M20 12H4m0 0 7-7m-7 7 7 7"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.8"
+              />
+            </SvgIcon>
+          }
+          sx={{ alignSelf: 'flex-start' }}
+        >
+          {backAction.label}
+        </Button>
       )}
-      {action && <Box sx={{ flexShrink: 0 }}>{action}</Box>}
+      <Stack
+        direction="row"
+        flexWrap="wrap"
+        useFlexGap
+        gap={2}
+        alignItems={action ? 'center' : 'flex-start'}
+        justifyContent="space-between"
+      >
+        {heading}
+        {action && <Box sx={{ flexShrink: 0 }}>{action}</Box>}
+      </Stack>
     </Stack>
   );
 }
