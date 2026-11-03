@@ -4,11 +4,25 @@ import { Box, Paper, Stack, Typography } from '@mui/material';
 export interface PageHeaderProps {
   title: string;
   subtitle?: string;
+  leadingAction?: ReactNode;
   action?: ReactNode;
 }
 
-/** Shared page title, supporting copy, and optional page-level action. */
-export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
+/** Shared page title, supporting copy, and optional leading or trailing page actions. */
+export function PageHeader({ title, subtitle, leadingAction, action }: PageHeaderProps) {
+  const heading = (
+    <Box sx={{ minWidth: 0 }}>
+      <Typography variant="pageTitle" color="text.primary">
+        {title}
+      </Typography>
+      {subtitle && (
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+          {subtitle}
+        </Typography>
+      )}
+    </Box>
+  );
+
   return (
     <Stack
       data-page-heading="true"
@@ -20,10 +34,14 @@ export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
       alignItems={action ? 'center' : 'flex-start'}
       justifyContent="space-between"
     >
-      <Box sx={{ minWidth: 0 }}>
-        <Typography variant="pageTitle" color="text.primary">{title}</Typography>
-        {subtitle && <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{subtitle}</Typography>}
-      </Box>
+      {leadingAction ? (
+        <Stack direction="row" alignItems="flex-start" spacing={1} sx={{ minWidth: 0, flex: 1 }}>
+          <Box sx={{ flexShrink: 0, mt: 0.25 }}>{leadingAction}</Box>
+          <Box sx={{ minWidth: 0, flex: 1 }}>{heading}</Box>
+        </Stack>
+      ) : (
+        heading
+      )}
       {action && <Box sx={{ flexShrink: 0 }}>{action}</Box>}
     </Stack>
   );
