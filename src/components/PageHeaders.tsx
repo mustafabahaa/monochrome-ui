@@ -46,7 +46,12 @@ export function PageHeader({ title, subtitle, backAction, action }: PageHeaderPr
               />
             </SvgIcon>
           }
-          sx={{ alignSelf: 'flex-start' }}
+          sx={{
+            alignSelf: 'flex-start',
+            minWidth: 0,
+            px: 0,
+            '& .MuiButton-startIcon': { ml: 0, mr: 1.5 },
+          }}
         >
           {backAction.label}
         </Button>
