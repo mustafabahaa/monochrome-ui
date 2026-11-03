@@ -211,4 +211,50 @@ export const buttonOverrides = ({ mode, tokens: t }: OverrideContext): Component
       },
     },
   },
+  MuiToggleButtonGroup: {
+    styleOverrides: {
+      root: {
+        gap: 4,
+        padding: 4,
+        borderRadius: designTokens.radius.pill,
+        backgroundColor: t.surfaceContainerLow,
+      },
+      grouped: {
+        margin: 0,
+        border: 0,
+        borderRadius: designTokens.radius.pill,
+        '&:not(:first-of-type)': { marginLeft: 0, borderLeft: 0 },
+      },
+      firstButton: { borderRadius: designTokens.radius.pill },
+      middleButton: { borderRadius: designTokens.radius.pill, margin: 0, border: 0 },
+      lastButton: { borderRadius: designTokens.radius.pill, margin: 0, border: 0 },
+    },
+  },
+  MuiToggleButton: {
+    styleOverrides: {
+      root: {
+        minHeight: 36,
+        border: 0,
+        borderRadius: designTokens.radius.pill,
+        padding: '8px 12px',
+        color: t.textSecondary,
+        fontWeight: 500,
+        textTransform: 'none',
+        transition: 'background-color .2s ease, color .2s ease',
+        '&:hover': { backgroundColor: alpha(mode === 'dark' ? '#FFFFFF' : designTokens.color.primary, 0.06) },
+        '&.Mui-selected': {
+          color: t.textPrimary,
+          backgroundColor: t.surfacePure,
+        },
+        '&.Mui-selected:hover': { backgroundColor: t.surfacePure },
+        '&.Mui-focusVisible': {
+          outline: `2px solid ${alpha(mode === 'dark' ? '#FFFFFF' : designTokens.color.primary, 0.35)}`,
+          outlineOffset: 2,
+        },
+        '&.Mui-disabled': { color: t.disabled, opacity: 1 },
+      },
+      sizeSmall: { minHeight: 32, padding: '6px 10px' },
+      sizeLarge: { minHeight: 40, padding: '10px 14px' },
+    },
+  },
 });
