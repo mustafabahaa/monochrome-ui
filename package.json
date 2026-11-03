@@ -1,6 +1,6 @@
 {
   "name": "@monochrome-ui/design-system",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "type": "module",
   "description": "Reusable monochrome UI foundations, MUI theme, and shared interface primitives.",
   "repository": {

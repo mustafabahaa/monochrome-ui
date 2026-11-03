@@ -13,6 +13,10 @@ export const buttonOverrides = ({ mode, tokens: t }: OverrideContext): Component
         transition: 'background-color .2s ease, border-color .2s ease, color .2s ease',
         '&:active': { transform: 'scale(.98)' },
       },
+      sizeSmall: { minHeight: 36 },
+      textSizeSmall: { padding: '4px 8px' },
+      outlinedSizeSmall: { padding: '3px 9px' },
+      containedSizeSmall: { padding: '4px 10px' },
       containedPrimary: {
         background: mode === 'dark' ? '#FFFFFF' : '#0D0D0D',
         color: mode === 'dark' ? '#0D0D0D' : '#FFFFFF',
