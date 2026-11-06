@@ -53,7 +53,9 @@ const motionStyles: Record<SaveFeedbackMotionVariant, SxProps<Theme>> = {
     animation: 'saveFeedbackLaunch 1100ms cubic-bezier(0.22, 1, 0.36, 1) both',
     '@keyframes saveFeedbackLaunch': {
       '0%': { opacity: 0, transform: 'translate(-50%, -50%) scale(0.42) rotate(10deg)' },
-      '14%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1) rotate(0deg)' },
+      '14%': { opacity: 0, transform: 'translate(-50%, -50%) scale(0.9) rotate(0deg)' },
+      '50%': { opacity: 0, transform: 'translate(-50%, calc(-50% - 40vh)) scale(0.96) rotate(-3deg)' },
+      '58%': { opacity: 1, transform: 'translate(-50%, calc(-50% - 48vh)) scale(1.02) rotate(-4deg)' },
       '62%': { opacity: 1, transform: 'translate(-50%, calc(-50% - 52vh)) scale(1.04) rotate(-4deg)' },
       '82%': { opacity: 1, transform: 'translate(-50%, calc(-50% - 58vh)) scale(0.92) rotate(0deg)' },
       '100%': { opacity: 0, transform: 'translate(-50%, calc(-50% - 64vh)) scale(0.72)' },
