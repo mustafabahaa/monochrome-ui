@@ -55,6 +55,9 @@ declare module '@mui/material/Paper' {
     timelineRow: true;
     capacityTrack: true;
     capacityFill: true;
+    capacityFillSuccess: true;
+    capacityFillWarning: true;
+    capacityFillError: true;
     capacityOverflow: true;
     detailRow: true;
     groupIdentityRow: true;

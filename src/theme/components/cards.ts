@@ -27,6 +27,16 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
   const chrome = mode === 'dark' ? '#FFFFFF' : '#0D0D0D';
   const highlight = mode === 'dark' ? 'inset 0 1px 0 rgba(255,255,255,.045)' : 'inset 0 1px 0 rgba(255,255,255,.9)';
   const shadow = mode === 'dark' ? '0 12px 28px rgba(0,0,0,.16)' : '0 10px 26px rgba(24,53,34,.035)';
+  const capacityFill = (backgroundColor: string) => ({
+    position: 'absolute',
+    insetInline: 0,
+    bottom: 0,
+    borderRadius: '11px 11px 8px 8px',
+    border: 0,
+    backgroundColor,
+    boxShadow: 'none',
+    transition: 'height .3s ease',
+  } as const);
   const cardSurfaceStyle = {
     position: 'relative',
     overflow: 'hidden',
@@ -420,16 +430,19 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
         },
         {
           props: { variant: 'capacityFill' },
-          style: {
-            position: 'absolute',
-            insetInline: 0,
-            bottom: 0,
-            borderRadius: '11px 11px 8px 8px',
-            border: 0,
-            backgroundColor: chrome,
-            boxShadow: 'none',
-            transition: 'height .3s ease',
-          },
+          style: capacityFill(chrome),
+        },
+        {
+          props: { variant: 'capacityFillSuccess' },
+          style: capacityFill(designTokens.color.success),
+        },
+        {
+          props: { variant: 'capacityFillWarning' },
+          style: capacityFill(designTokens.color.warning),
+        },
+        {
+          props: { variant: 'capacityFillError' },
+          style: capacityFill(designTokens.color.error),
         },
         {
           props: { variant: 'capacityOverflow' },
