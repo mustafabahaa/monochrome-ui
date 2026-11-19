@@ -278,7 +278,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantAvatar' },
+          props: { variant: 'inverseIconBadge' },
           style: {
             width: 44,
             height: 44,
@@ -291,7 +291,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantComposer' },
+          props: { variant: 'messageComposer' },
           style: {
             minHeight: 72,
             padding: '10px 10px 10px 20px',
@@ -308,7 +308,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantUserMessage' },
+          props: { variant: 'outgoingMessage' },
           style: {
             borderRadius: 18,
             padding: '10px 16px',
@@ -318,7 +318,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantReply' },
+          props: { variant: 'richTextMessage' },
           style: {
             backgroundColor: 'transparent',
             color: t.textPrimary,
@@ -332,7 +332,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantMessageAvatar' },
+          props: { variant: 'messageAvatar' },
           style: {
             width: 28,
             height: 28,
@@ -346,11 +346,11 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantHeader' },
+          props: { variant: 'panelHeader' },
           style: { height: 56, borderRadius: 0, border: 0, backgroundColor: t.surfaceContainerLow, boxShadow: 'none' },
         },
         {
-          props: { variant: 'assistantCooldown' },
+          props: { variant: 'statusNotice' },
           style: {
             borderRadius: 16,
             border: 0,
@@ -361,7 +361,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantAction' },
+          props: { variant: 'actionPanel' },
           style: {
             borderRadius: 16,
             border: `1px solid ${t.borderGray}`,
@@ -372,7 +372,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
           },
         },
         {
-          props: { variant: 'assistantChart' },
+          props: { variant: 'chartPanel' },
           style: {
             borderRadius: 16,
             border: `1px solid ${t.borderGray}`,

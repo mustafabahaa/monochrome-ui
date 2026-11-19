@@ -153,7 +153,7 @@ export const buttonOverrides = ({ mode, tokens: t }: OverrideContext): Component
         },
       },
       {
-        props: { variant: 'assistantPrompt' },
+        props: { variant: 'suggestionAction' },
         style: {
           minHeight: 112,
           height: 112,
@@ -170,7 +170,7 @@ export const buttonOverrides = ({ mode, tokens: t }: OverrideContext): Component
         },
       },
       {
-        props: { variant: 'assistantPromptFeatured' },
+        props: { variant: 'featuredSuggestionAction' },
         style: {
           minHeight: 112,
           height: 112,
@@ -187,7 +187,7 @@ export const buttonOverrides = ({ mode, tokens: t }: OverrideContext): Component
         },
       },
       {
-        props: { variant: 'assistantSend' },
+        props: { variant: 'sendAction' },
         style: {
           width: 40,
           minWidth: 40,

@@ -23,9 +23,9 @@ declare module '@mui/material/Button' {
     compactField: true;
     adornmentAction: true;
     primaryAction: true;
-    assistantPrompt: true;
-    assistantPromptFeatured: true;
-    assistantSend: true;
+    suggestionAction: true;
+    featuredSuggestionAction: true;
+    sendAction: true;
   }
 }
 
@@ -39,15 +39,15 @@ declare module '@mui/material/Paper' {
     amountPanelInactive: true;
     selectable: true;
     selectableSelected: true;
-    assistantAvatar: true;
-    assistantComposer: true;
-    assistantUserMessage: true;
-    assistantReply: true;
-    assistantMessageAvatar: true;
-    assistantHeader: true;
-    assistantCooldown: true;
-    assistantAction: true;
-    assistantChart: true;
+    inverseIconBadge: true;
+    messageComposer: true;
+    outgoingMessage: true;
+    richTextMessage: true;
+    messageAvatar: true;
+    panelHeader: true;
+    statusNotice: true;
+    actionPanel: true;
+    chartPanel: true;
     saveFeedbackOverlay: true;
     iconBadge: true;
     balanceTile: true;
@@ -105,9 +105,9 @@ declare module '@mui/material/styles' {
     amountValue: React.CSSProperties;
     amountPlaceholder: React.CSSProperties;
     amountCurrency: React.CSSProperties;
-    assistantPromptLabel: React.CSSProperties;
-    assistantPromptTitle: React.CSSProperties;
-    assistantMessage: React.CSSProperties;
+    suggestionLabel: React.CSSProperties;
+    suggestionTitle: React.CSSProperties;
+    messageBody: React.CSSProperties;
     metricTitle: React.CSSProperties;
     metricValue: React.CSSProperties;
     metricValueCompact: React.CSSProperties;
@@ -163,9 +163,9 @@ declare module '@mui/material/styles' {
     amountValue?: React.CSSProperties;
     amountPlaceholder?: React.CSSProperties;
     amountCurrency?: React.CSSProperties;
-    assistantPromptLabel?: React.CSSProperties;
-    assistantPromptTitle?: React.CSSProperties;
-    assistantMessage?: React.CSSProperties;
+    suggestionLabel?: React.CSSProperties;
+    suggestionTitle?: React.CSSProperties;
+    messageBody?: React.CSSProperties;
     metricTitle?: React.CSSProperties;
     metricValue?: React.CSSProperties;
     metricValueCompact?: React.CSSProperties;
@@ -223,9 +223,9 @@ declare module '@mui/material/Typography' {
     amountValue: true;
     amountPlaceholder: true;
     amountCurrency: true;
-    assistantPromptLabel: true;
-    assistantPromptTitle: true;
-    assistantMessage: true;
+    suggestionLabel: true;
+    suggestionTitle: true;
+    messageBody: true;
     metricTitle: true;
     metricValue: true;
     metricValueCompact: true;

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import consumerRules from './consumer-rules.js';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const declarationFiles = [
@@ -42,10 +43,56 @@ const variantsByComponent = {
   Select: new Set(['outlined', 'filled', 'standard']),
 };
 
+const domainSpecificVariantTerms = [
+  'account', 'assistant', 'budget', 'category', 'household', 'insurance', 'kippa', 'kip', 'loan',
+  'merchant', 'pending', 'reconciliation', 'transaction', 'transfer',
+];
+const domainVariantTerm = (variant) => domainSpecificVariantTerms.find((candidate) =>
+  new RegExp(`(?:^|[^a-z])${candidate}(?:$|[^a-z])`, 'i').test(variant.replace(/([a-z])([A-Z])/g, '$1 $2')),
+);
+
 const normalize = (value) => value.replaceAll('\\', '/');
 
 const designSystemRules = {
+  ...consumerRules,
+  'ui-role-variant-names': {
+    meta: {
+      type: 'problem',
+      docs: { description: 'Keep public design-system variant names tied to reusable UI roles.' },
+      schema: [],
+      messages: {
+        domainVariant: "'{{variant}}' includes '{{term}}', which describes a product or business area. Name the reusable UI role instead.",
+      },
+    },
+    create(context) {
+      const customVariants = new Set(Object.values(variantsByComponent).flatMap((variants) => [...variants]));
+      const invalidVariants = [...customVariants].flatMap((variant) => {
+        const term = domainVariantTerm(variant);
+        return term ? [{ variant, term }] : [];
+      });
+      return {
+        Program(node) {
+          for (const { variant, term } of invalidVariants) {
+            context.report({ node, messageId: 'domainVariant', data: { variant, term } });
+          }
+        },
+        JSXAttribute(node) {
+          if (node.name.type !== 'JSXIdentifier' || node.name.name !== 'variant') return;
+          const value = node.value?.type === 'Literal' && typeof node.value.value === 'string'
+            ? node.value
+            : node.value?.type === 'JSXExpressionContainer' && node.value.expression.type === 'Literal' &&
+                typeof node.value.expression.value === 'string'
+              ? node.value.expression
+              : null;
+          if (!value) return;
+          const term = domainVariantTerm(value.value);
+          if (term) context.report({ node: value, messageId: 'domainVariant', data: { variant: value.value, term } });
+        },
+      };
+    },
+  },
   'known-variants': {
+
     meta: {
       type: 'problem',
       docs: { description: 'Reject component variants that are not provided by Monochrome UI.' },
