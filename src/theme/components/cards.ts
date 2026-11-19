@@ -438,7 +438,7 @@ export const cardOverrides = ({ mode, tokens: t }: OverrideContext): Components<
         },
         {
           props: { variant: 'capacityFillWarning' },
-          style: capacityFill(designTokens.color.warning),
+          style: capacityFill(mode === 'dark' ? '#E6B36A' : designTokens.color.chartWarning),
         },
         {
           props: { variant: 'capacityFillError' },
