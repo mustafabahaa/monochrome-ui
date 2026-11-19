@@ -12,7 +12,7 @@ export const designTokens = {
     tertiary: '#737373',
     tertiaryContainer: '#A3A3A3',
     success: '#4F8061',
-    warning: '#B77937',
+    warning: '#8C6B2F',
     error: '#B65C5C',
     onError: '#FFFFFF',
     errorContainer: '#FCE8E6',
