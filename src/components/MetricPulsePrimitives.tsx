@@ -120,6 +120,14 @@ const MetricTileRoot = styled(Box, {
   ...metricTileToneStyles[tone](theme),
 }));
 
+const MetricTileHeading = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: theme.spacing(0.5),
+  minWidth: 0,
+}));
+
 export function RankedMetricTile({
   tone,
   rank,
@@ -132,14 +140,14 @@ export function RankedMetricTile({
 
   return (
     <MetricTileRoot tone={tone} rank={rank}>
-      <Box>
+      <MetricTileHeading>
         <Typography variant={compactPercent ? 'percentageCompact' : 'percentageLarge'}>
           {percent}%
         </Typography>
         <Typography variant="metricCaption">
           {label}
         </Typography>
-      </Box>
+      </MetricTileHeading>
       <Typography variant="metricValueCaption" noWrap title={valueTitle}>
         {children}
       </Typography>

@@ -11,7 +11,6 @@ const ActivityStateTextRoot = styled(Typography, {
   inactive
     ? {
         color: theme.palette.text.disabled,
-        textDecoration: 'line-through',
       }
     : {},
 );

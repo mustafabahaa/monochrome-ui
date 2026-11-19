@@ -29,6 +29,6 @@ The consuming app supplies React, MUI, Emotion, and any optional MUI X peer depe
 
 ## ESLint plugin
 
-Import `@monochrome-ui/design-system/eslint` as a flat-config plugin to apply the shared UI rules. It includes variant validation and naming, shared `Button` loading behavior, input-adornment spacing, layout gaps, typography roles, visual override boundaries, and the routed-page scaffold check. Keep app-specific architecture rules in each consuming app.
+Import `@monochrome-ui/design-system/eslint` as a flat-config plugin to apply the shared UI rules. It includes variant validation and naming, shared `Button` loading behavior, input-adornment spacing, layout gaps, typography roles, metric caption stacking, visual override boundaries, and the routed-page scaffold check. Keep app-specific architecture rules in each consuming app.
 
 Applications can extend the shared theme with product data colors and app-specific behavior. Shared visual roles and tokens remain defined here.

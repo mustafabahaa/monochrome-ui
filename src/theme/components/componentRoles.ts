@@ -24,6 +24,20 @@ export const componentRoleOverrides = ({ mode, tokens: t }: OverrideContext): Co
     },
     MuiMenuItem: { variants: [
       { props: { variant: 'menuAction' }, style: { borderRadius: 8 } },
+      { props: { variant: 'navigationItem' }, style: {
+        color: t.textSecondary,
+        '& .MuiListItemIcon-root': { color: t.textSecondary },
+        '& .MuiListItemText-primary, & .MuiTypography-root': {
+          color: t.textSecondary,
+          fontSize: 13,
+          fontWeight: 450,
+        },
+        '&.Mui-selected': { color: t.textPrimary },
+        '&.Mui-selected .MuiListItemIcon-root': { color: t.textPrimary },
+        '&.Mui-selected .MuiListItemText-primary, &.Mui-selected .MuiTypography-root': {
+          color: t.textPrimary,
+        },
+      } },
       { props: { variant: 'destructiveAction' }, style: { borderRadius: 8, color: designTokens.color.error } },
     ] },
     MuiChip: {

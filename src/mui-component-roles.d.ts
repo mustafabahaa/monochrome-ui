@@ -11,7 +11,7 @@ declare module '@mui/material/Avatar' {
   interface AvatarPropsVariantOverrides { profile: true }
 }
 declare module '@mui/material/MenuItem' {
-  interface MenuItemOwnProps { variant?: 'menuAction' | 'destructiveAction' }
+  interface MenuItemOwnProps { variant?: 'menuAction' | 'navigationItem' | 'destructiveAction' }
 }
 declare module '@mui/material/Chip' {
   interface ChipPropsVariantOverrides { overlayBadge: true; quietBadge: true }

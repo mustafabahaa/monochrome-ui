@@ -1010,6 +1010,69 @@ const consumerRules = {
       };
     },
   },
+  "metric-caption-stacking": {
+    meta: {
+      type: "problem",
+      docs: {
+        description:
+          "Keep a metric's supporting label below its percentage instead of flowing beside it.",
+      },
+      schema: [],
+      messages: {
+        inlineCaption:
+          "Place metric captions below their percentage in a vertical layout so labels cannot run into the value.",
+      },
+    },
+    create(context) {
+      const getVariants = (element) => {
+        if (element?.type !== "JSXElement") return [];
+        const attribute = element.openingElement.attributes.find(
+          (item) =>
+            item.type === "JSXAttribute" && item.name.name === "variant",
+        );
+        if (attribute?.value?.type === "Literal")
+          return [attribute.value.value];
+        if (
+          attribute?.value?.type === "JSXExpressionContainer" &&
+          attribute.value.expression.type === "Literal"
+        )
+          return [attribute.value.expression.value];
+        const expression = attribute?.value?.type === "JSXExpressionContainer"
+          ? attribute.value.expression
+          : null;
+        const collect = (node) => {
+          if (!node) return [];
+          if (node.type === "Literal" && typeof node.value === "string")
+            return [node.value];
+          if (node.type === "ConditionalExpression")
+            return [...collect(node.consequent), ...collect(node.alternate)];
+          if (node.type === "LogicalExpression")
+            return [...collect(node.left), ...collect(node.right)];
+          return [];
+        };
+        return collect(expression);
+      };
+
+      return {
+        JSXElement(node) {
+          const children = node.children.filter(
+            (child) => child.type === "JSXElement",
+          );
+          const hasPercentage = children.some((child) =>
+            getVariants(child).some((variant) =>
+              ["percentageLarge", "percentageCompact"].includes(variant),
+            ),
+          );
+          if (!hasPercentage) return;
+
+          for (const child of children) {
+            if (!getVariants(child).includes("metricCaption")) continue;
+            context.report({ node: child.openingElement, messageId: "inlineCaption" });
+          }
+        },
+      };
+    },
+  },
   "button-loading-prop": buttonLoadingPropRule,
 };
 

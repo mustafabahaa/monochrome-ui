@@ -94,6 +94,8 @@ export const baselineOverrides = ({
       }
       .ds-stepper {
         position: relative;
+        --ds-stepper-node-y: 50%;
+        --ds-stepper-gap-half: 0px;
       }
       .ds-stepper > * {
         position: relative;
@@ -103,18 +105,18 @@ export const baselineOverrides = ({
         content: '';
         position: absolute;
         z-index: 0;
-        left: 30px;
+        left: var(--ds-stepper-center-x, 30px);
         width: 1px;
         background: ${t.borderGray};
         pointer-events: none;
       }
       .ds-stepper > *::before {
-        top: 0;
-        height: 50%;
+        top: calc(0px - var(--ds-stepper-gap-half));
+        height: calc(var(--ds-stepper-node-y) + var(--ds-stepper-gap-half));
       }
       .ds-stepper > *::after {
-        top: 50%;
-        bottom: 0;
+        top: var(--ds-stepper-node-y);
+        bottom: calc(0px - var(--ds-stepper-gap-half));
       }
       .ds-stepper > :first-of-type::before,
       .ds-stepper > :last-of-type::after {
