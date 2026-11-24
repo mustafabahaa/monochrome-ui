@@ -1,5 +1,7 @@
 # Monochrome UI contribution rules
 
+- When wiring this package into a first-party app that follows `main`, use `github:mustafabahaa/monochrome-ui#main` in its manifest and commit the resolved SHA in its npm lockfile. On build, compare the lockfile and installed package against remote `main`, refresh this dependency when stale, and resolve any compatibility errors before publishing the app.
+
 - Keep this package app-neutral. Do not name public components, theme variants, or tokens after a consuming app, feature, business domain, or data entity.
 - Keep reusable visual appearance here. Applications should compose package primitives and named variants rather than reimplementing them.
 - Reuse an existing MUI/design-system variant whenever it fits. Add a named variant and TypeScript augmentation only for a distinct, repeatable UI role.
